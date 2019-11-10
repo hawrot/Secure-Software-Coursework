@@ -1,7 +1,15 @@
 const express = require('express');
-const app = express();
 const port = 3000;
+const bodyParser = require('body-parser');
+const app = express();
 
-app.get('/', (req, res) => res.send('Hello world'));
+const adminRouters = require('./routes/admin');
 
-app.listen(port, ()=> console.log('Init app on port ${port}'));
+app.use(bodyParser.urlencoded());
+app.use('', adminRouters);
+
+
+
+
+
+app.listen(port);
