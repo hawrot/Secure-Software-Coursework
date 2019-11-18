@@ -3,7 +3,14 @@
   "homepage": "http://nodemon.io",
   "...": "... other standard package.json values",
   "nodemonConfig": {
-    "ignore": ["test/*", "docs/*"],
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
     "delay": "2500"
+  },
+  "dependencies": {
+    "ejs": "^2.7.2",
+    "express": "^4.17.1"
   }
 }

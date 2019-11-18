@@ -5,12 +5,18 @@ const rootDir = require('../util/path');
 
 
 
-router.use('/view-bug', (req,res,next)=>{
-    res.sendFile(path.join(rootDir, 'views', 'view-bug.html'));
+router.get('view-bug',(req,res,next)=>{
+    res.render('view-bug', {
+       pageTitle: 'View Bugs',
+        path: 'view-bug'
+    });
 });
 
-router.use('/', (req,res,next)=>{
-   res.sendFile(path.join(rootDir, 'views', 'index.html'));
+router.get('/', (req,res,next)=>{
+   res.render('index', {
+       pageTitle: 'Index',
+       path: '/'
+   });
 
 });
 
