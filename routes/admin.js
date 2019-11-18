@@ -5,7 +5,7 @@ const rootDir = require('../util/path');
 
 
 
-router.get('view-bug',(req,res,next)=>{
+router.get('/view-bug',(req,res,next)=>{
     res.render('view-bug', {
        pageTitle: 'View Bugs',
         path: 'view-bug'
