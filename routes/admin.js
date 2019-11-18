@@ -5,9 +5,15 @@ const rootDir = require('../util/path');
 
 
 
-router.use('/', (req,res,next)=>{
-   res.sendfile(path.join(rootDir, 'views', 'index.html' ));
+router.use('/view-bug', (req,res,next)=>{
+    res.sendFile(path.join(rootDir, 'views', 'view-bug.html'));
 });
+
+router.use('/', (req,res,next)=>{
+   res.sendFile(path.join(rootDir, 'views', 'index.html'));
+
+});
+
 
 
 module.exports = router;
