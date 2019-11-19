@@ -12,6 +12,14 @@ router.get('/view-bug',(req,res,next)=>{
     });
 });
 
+router.get('/add-bug', (req,res,next)=>{
+    res.render('add-bug', {
+        pageTitle: 'Add a bug',
+        path: 'add-bug'
+
+    });
+});
+
 router.get('/', (req,res,next)=>{
    res.render('index', {
        pageTitle: 'Index',
@@ -19,6 +27,8 @@ router.get('/', (req,res,next)=>{
    });
 
 });
+
+
 
 
 
