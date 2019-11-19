@@ -3,6 +3,8 @@ const router = express.Router();
 const path = require('path');
 const rootDir = require('../util/path');
 
+const bugController = require('../controllers/bug');
+
 
 
 router.get('/view-bug',(req,res,next)=>{
@@ -12,13 +14,7 @@ router.get('/view-bug',(req,res,next)=>{
     });
 });
 
-router.get('/add-bug', (req,res,next)=>{
-    res.render('add-bug', {
-        pageTitle: 'Add a bug',
-        path: 'add-bug'
-
-    });
-});
+router.get('/add-bug', bugController.getAddBug);
 
 router.get('/', (req,res,next)=>{
    res.render('index', {
@@ -27,10 +23,6 @@ router.get('/', (req,res,next)=>{
    });
 
 });
-
-
-
-
 
 module.exports = router;
 
