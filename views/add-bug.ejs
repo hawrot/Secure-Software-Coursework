@@ -8,13 +8,36 @@
     <title><%= pageTitle%></title>
 </head>
 <body>
-<ion-contnet>
+<ion-content>
     <ion-header translucent>
         <ion-toolbar color="primary">
             <ion-title>Add a bug</ion-title>
         </ion-toolbar>
     </ion-header>
-</ion-contnet>
+             <ion-item>
+                <ion-label position="fixed">Bug title</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Bug description</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Date</ion-label>
+                <ion-input type="date"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Assigned to</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="fixed">Assigned by</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+                <ion-button color="primary">Submit</ion-button>
+                <ion-button color="warning">Cancle</ion-button>
+
+</ion-content>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
