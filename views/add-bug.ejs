@@ -14,30 +14,37 @@
             <ion-title>Add a bug</ion-title>
         </ion-toolbar>
     </ion-header>
-        <form class="bug-form" action="/add-bug" method="POST">
-             <ion-item>
-                <ion-label position="fixed">Bug title</ion-label>
-                <ion-input name="name" id="name"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="fixed">Bug description</ion-label>
-                <ion-input name="desc" id="desc"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="fixed">Date</ion-label>
-                <ion-input name="date" id="date" type="date"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="fixed">Assigned to</ion-label>
-                <ion-input name="assignedTo" id="assignedTo"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="fixed">Assigned by</ion-label>
-                <ion-input name="assignedBy" id="assignedBy"></ion-input>
-            </ion-item>
-                <ion-button type="submit" color="primary">Submit</ion-button>
-                <ion-button href="view-bug" color="warning">Cancle</ion-button>
-        </form>
+    <ion-grid>
+            <ion-row>
+                <ion-col size-md="4" offset-md="4" possition="centre">
+                    <form class="bug-form" action="/add-bug" method="POST">
+                        <ion-item>
+                            <ion-label position="fixed">Bug title</ion-label>
+                            <ion-input name="name" id="name"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="fixed">Description</ion-label>
+                            <ion-input name="desc" id="desc"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="fixed">Date</ion-label>
+                            <ion-input name="date" id="date" type="date"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="fixed">Assigned to</ion-label>
+                            <ion-input name="assignedTo" id="assignedTo"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="fixed">Assigned by</ion-label>
+                            <ion-input name="assignedBy" id="assignedBy"></ion-input>
+                        </ion-item>
+                        <ion-button type="submit" color="primary">Submit</ion-button>
+                        <ion-button href="view-bug" color="warning">Cancle</ion-button>
+                    </form>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
 </ion-content>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
