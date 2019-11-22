@@ -11,7 +11,7 @@ app.set('views', 'views');
 
 const adminRouters = require('./routes/admin');
 
-//app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extend: "false"}));
 
 app.use(adminRouters);
 

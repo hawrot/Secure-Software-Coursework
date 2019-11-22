@@ -14,29 +14,30 @@
             <ion-title>Add a bug</ion-title>
         </ion-toolbar>
     </ion-header>
+        <form class="bug-form" action="/add-bug" method="POST">
              <ion-item>
                 <ion-label position="fixed">Bug title</ion-label>
-                <ion-input></ion-input>
+                <ion-input name="name" id="name"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="fixed">Bug description</ion-label>
-                <ion-input></ion-input>
+                <ion-input name="desc" id="desc"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="fixed">Date</ion-label>
-                <ion-input type="date"></ion-input>
+                <ion-input name="date" id="date" type="date"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="fixed">Assigned to</ion-label>
-                <ion-input></ion-input>
+                <ion-input name="assignedTo" id="assignedTo"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="fixed">Assigned by</ion-label>
-                <ion-input></ion-input>
+                <ion-input name="assignedBy" id="assignedBy"></ion-input>
             </ion-item>
-                <ion-button color="primary">Submit</ion-button>
+                <ion-button type="submit" color="primary">Submit</ion-button>
                 <ion-button href="view-bug" color="warning">Cancle</ion-button>
-
+        </form>
 </ion-content>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>

@@ -13,6 +13,7 @@ router.get('/view-bug',(req,res,next)=>{
         path: 'view-bug'
     });
 });
+router.post('/add-bug', bugController.postAddBug);
 
 router.get('/add-bug', bugController.getAddBug);
 
