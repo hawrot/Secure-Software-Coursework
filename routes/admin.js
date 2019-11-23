@@ -7,12 +7,13 @@ const bugController = require('../controllers/bug');
 
 
 
-router.get('/view-bug',(req,res,next)=>{
+/*router.get('/view-bug',(req,res,next)=>{
     res.render('view-bug', {
        pageTitle: 'View Bugs',
         path: 'view-bug'
     });
-});
+});*/
+router.get('/view-bug', bugController.getBugs);
 router.post('/add-bug', bugController.postAddBug);
 
 router.get('/add-bug', bugController.getAddBug);

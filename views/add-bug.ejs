@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= pageTitle%></title>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="../public/css/index.css">
 </head>
 <body>
 <ion-content>
@@ -20,11 +21,11 @@
                     <form class="bug-form" action="/add-bug" method="POST">
                         <ion-item>
                             <ion-label position="fixed">Bug title</ion-label>
-                            <ion-input name="name" id="name"></ion-input>
+                            <ion-input required="true" type="text" name="name" id="name"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed">Description</ion-label>
-                            <ion-input name="desc" id="desc"></ion-input>
+                            <ion-input required="true" name="desc" id="desc"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed">Date</ion-label>
@@ -38,13 +39,15 @@
                             <ion-label position="fixed">Assigned by</ion-label>
                             <ion-input name="assignedBy" id="assignedBy"></ion-input>
                         </ion-item>
-                        <ion-button type="submit" color="primary">Submit</ion-button>
+
+                        <ion-button name="submitBtn" type="submit" color="primary">Submit</ion-button>
                         <ion-button href="view-bug" color="warning">Cancle</ion-button>
                     </form>
+
                 </ion-col>
             </ion-row>
         </ion-grid>
-
+    <ion-alert-controller></ion-alert-controller>
 </ion-content>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>

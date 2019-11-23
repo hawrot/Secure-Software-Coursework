@@ -5,16 +5,38 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= pageTitle%></title>
+    <title><%= pageTitle %></title>
 </head>
 <body>
 <ion-contnet color="blue">
-    <ion-header translucent>
+    <ion-header  translucent>
         <ion-toolbar color="primary">
             <ion-title>Bug Tracker</ion-title>
+            <ion-button href="/" color="warning">Log out</ion-button>
         </ion-toolbar>
-        <ion-button align="right" href="add-bug" color="success">Add a bug</ion-button>
     </ion-header>
+    <ion-button href="add-bug" color="success">Add a bug</ion-button>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+
+                <% for (let bug of bugs) { %>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-title><%= bug.name%></ion-card-title>
+                        <ion-card-subtitle><%=bug.desc%></ion-card-subtitle>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                       <%= bug.desc%>
+                    </ion-card-content>
+                    <ion-button margin="10px" color="warning">Delete</ion-button>
+                </ion-card>
+                <% } %>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </ion-contnet>
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>

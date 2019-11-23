@@ -12,13 +12,9 @@ app.set('views', 'views');
 const adminRouters = require('./routes/admin');
 
 app.use(bodyParser.urlencoded({extend: "false"}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(adminRouters);
-
-/*app.use((req, res, next) => {
-    // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-    res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/404' });
-});*/
 
 app.use(errorController.get404);
 
