@@ -4,6 +4,8 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const app = express();
 
+const mongoConnect = require('./util/database').mongoConnect;
+
 const errorController = require('./controllers/error');
 
 app.set('view engine', 'ejs');
@@ -18,4 +20,8 @@ app.use(adminRouters);
 
 app.use(errorController.get404);
 
-app.listen(port);
+//app.listen(port);
+
+mongoConnect(() =>{
+    app.listen(port);
+});

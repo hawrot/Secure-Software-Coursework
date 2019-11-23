@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const mongodb = require('mongodb');
 
 const p = path.join(
     path.dirname(process.mainModule.filename),
@@ -18,24 +19,46 @@ const getProductsFromFile = cb => {
 };
 
 module.exports = class Bugs {
-    constructor(title, description, date, assignedBy, assignedTo) {
+    constructor(title, description, assignedBy, assignedTo) {
         this.name = title;
         this.desc = description;
-        this.date = date;
+        this.date = Date.now();
         this.assignedTo = assignedTo;
         this.assignedBy = assignedBy;
     }
 
-    save() {
-        getProductsFromFile(bugs => {
-            bugs.push(this);
-            fs.writeFile(p, JSON.stringify(bugs), err => {
+     save() {
+        const db = getDb();
+        let dbOp;
+        if (this._id) {
+            // Update the product
+            dbOp = db
+                .collection('bugs')
+                .updateOne({ _id: new mongodb.ObjectId(this._id) }, { $set: this });
+        } else {
+            dbOp = db.collection('bugs').insertOne(this);
+        }
+        return dbOp
+            .then(result => {
+                console.log(result);
+            })
+            .catch(err => {
                 console.log(err);
             });
-        });
     }
 
-    static fetchAll(cb) {
-        getProductsFromFile(cb);
+    static fetchAll() {
+        const db = getDb();
+        return db
+            .collection('bugs')
+            .find()
+            .toArray()
+            .then(bugs => {
+                console.log(bugs);
+                return bugs;
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 };
