@@ -28,8 +28,12 @@
                     </ion-card-header>
 
                     <ion-card-content>
-                       <%= bug.desc%><br>
-                        Date:  <%= bug.date%>
+                       <b>Date:</b> <%= bug.date%><br>
+                        <b>Assigned To:</b> <%= bug.assignedTo%><br>
+                        <b>Created By:</b> <%= bug.assignedBy%><br>
+                        <b>Status:</b> <%= bug.status%><br>
+                        <b>Priority:</b> <%= bug.priority%><br>
+
                     </ion-card-content>
                     <ion-button margin="10px" color="warning">Delete</ion-button>
                 </ion-card>
