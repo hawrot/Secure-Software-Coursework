@@ -15,15 +15,17 @@ exports.postAddBug = (req, res, next) =>{
     const date =  req.body.date;
     const assignedTo = req.body.assignedTo;
     const assignedBy = req.body.assignedBy;
+    const status = req.body.status;
+    const priority = req.body.priority;
 
-    let bug = new Bug(name, desc, date, assignedTo, assignedBy);
+    let bug = new Bug(name, desc, date, assignedTo, assignedBy, status, priority);
     console.log(bug);
     bug.save();
     res.redirect('/view-bug');
 };
 
 exports.getBugs = (req,res,next) =>{
-  const listOfBugs = Bug.fetchAll((bugs) =>{
+  Bug.fetchAll().then(bugs =>{
      res.render('view-bug', {
          bugs: bugs,
          pageTitle: 'Bugs',
