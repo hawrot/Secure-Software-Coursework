@@ -8,14 +8,24 @@
     <title><%= pageTitle %></title>
 </head>
 <body>
-<ion-contnet color="blue">
-    <ion-header  translucent>
+<ion-app>
+
+
+
+    <ion-header   translucent>
         <ion-toolbar color="primary">
             <ion-title>Bug Tracker</ion-title>
-            <ion-button href="/" color="warning">Log out</ion-button>
+            <ion-button slot="primary" href="/" color="warning">Log out</ion-button>
         </ion-toolbar>
     </ion-header>
-    <ion-button href="add-bug" color="success">Add a bug</ion-button>
+<ion-content>
+
+
+    <ion-fab padding="30px" horizontal="start" vertical="top" slot="fixed" edge>
+        <ion-fab-button href="add-bug">
+            <ion-icon  name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
     <ion-grid>
         <ion-row>
             <ion-col size-md="6" offset-md="3">
@@ -42,8 +52,8 @@
         </ion-row>
     </ion-grid>
 
-</ion-contnet>
-
+</ion-content>
+</ion-app>>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
