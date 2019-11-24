@@ -20,10 +20,10 @@ const getProductsFromFile = cb => {
 };
 
 module.exports = class Bugs {
-    constructor(title, description, assignedBy, assignedTo, status, priority) {
+    constructor(title, description, assignedTo, assignedBy, status, priority) {
         this.name = title;
         this.desc = description;
-        this.date = Date.now();
+        this.date = Date.now().toString();
         this.assignedTo = assignedTo;
         this.assignedBy = assignedBy;
      //   this._id = id ? new mongodb.ObjectId(id): null;
