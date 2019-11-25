@@ -12,8 +12,14 @@ exports.getAddBug = (req, res, next) =>{
 
 
 exports.postAddBug = (req, res, next) =>{
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+
     const title = req.body.title;
     const description = req.body.description;
+    const dateTime = date+' '+time;
     const assignedTo = req.body.assignedTo;
     const assignedBy = req.body.assignedBy;
     const status = req.body.status;
@@ -21,8 +27,9 @@ exports.postAddBug = (req, res, next) =>{
 
 
 
-    const bug = new Bug({title, description, assignedTo, assignedBy, status, priority});
+    const bug = new Bug({title, description, date, time, assignedTo, assignedBy, status, priority});
     console.log(bug);
+    console.log(typeof dateTime);
     bug.save().then(result =>{
         console.log(result);
         res.redirect('/view-bug');
