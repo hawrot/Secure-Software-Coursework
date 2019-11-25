@@ -24,6 +24,10 @@
                             <div class="user-message user-message--error"><%= errorMessage %></div>
                         <% } %>
                         <form class="login-form" action="/signup" method="POST">
+                         <ion-item>
+                             <ion-lable position="fixed">Full Name</ion-lable>
+                             <ion-input required type="text" name="fullName" id="fullName"></ion-input>
+                         </ion-item>
                         <ion-item class="log-field">
                             <ion-label position="fixed">Email</ion-label>
                             <ion-input required type="email" name="email" id="email"></ion-input>

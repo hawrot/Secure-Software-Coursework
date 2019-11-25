@@ -1,18 +1,24 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const auth = require('../middleware/is-auth');
 
 exports.getLogin = (req, res, next) => {
-    let message = req.flash('error');
-    if (message.length > 0) {
-        message = message[0];
-    } else {
-        message = null;
-    }
-    res.render('login', {
-        path: '/login',
-        pageTitle: 'Login',
-        errorMessage: message
-    });
+
+
+        let message = req.flash('error');
+        if (message.length > 0) {
+            message = message[0];
+        } else {
+            message = null;
+        }
+        res.render('login', {
+            path: '/login',
+            pageTitle: 'Login',
+            errorMessage: message
+        });
+
+
+
 };
 
 exports.getSignup = (req, res, next) => {
@@ -66,6 +72,7 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postSignup = (req, res, next) => {
+    const fullName = req.body.fullName;
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
@@ -79,6 +86,7 @@ exports.postSignup = (req, res, next) => {
                 .hash(password, 12)
                 .then(hashedPassword => {
                     const user = new User({
+                        fullName: fullName,
                         email: email,
                         password: hashedPassword,
                         bugs: { items: [] }

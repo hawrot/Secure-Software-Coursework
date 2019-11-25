@@ -21,18 +21,18 @@
                     <form class="bug-form" action="/add-bug" method="POST">
                         <ion-item>
                             <ion-label position="fixed">Bug title</ion-label>
-                            <ion-input required="true" type="text" name="name" id="name"></ion-input>
+                            <ion-input required="true" type="text" name="title" id="title"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed">Description</ion-label>
-                            <ion-input required="true" name="desc" id="desc"></ion-input>
+                            <ion-input required="true" name="description" id="description"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed">Assigned to</ion-label>
                             <ion-input name="assignedTo" id="assignedTo"></ion-input>
                         </ion-item>
                         <ion-item>
-                            <ion-label position="fixed">Assigned by</ion-label>
+                            <ion-label position="fixed" disabled>Assigned by</ion-label>
                             <ion-input name="assignedBy" id="assignedBy"></ion-input>
                         </ion-item>
 
@@ -50,14 +50,15 @@
                                 <ion-select-option selected value="open">Open</ion-select-option>
                                 <ion-select-option value="resolved">Resolved</ion-select-option>
                             </ion-select>
+
                         </ion-item>
 
 
-
+                        <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
                         <ion-button name="submitBtn" type="submit" color="primary">Submit</ion-button>
                         <ion-button href="view-bug" color="warning">Cancle</ion-button>
-                    </form>
 
+                    </form>
                 </ion-col>
             </ion-row>
         </ion-grid>

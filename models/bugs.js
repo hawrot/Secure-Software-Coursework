@@ -30,15 +30,7 @@ const bugSchema = new Schema({
     priority: {
         type: String,
         required: true
-    },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
     }
-
-
-
 
 });
 
