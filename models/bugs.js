@@ -1,3 +1,55 @@
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const bugSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: String,
+        required: true
+    },
+    assignedTo: {
+        type: String,
+        required: true
+    },
+    assignedBy: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    },
+    priority: {
+        type: String,
+        required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
+
+
+
+
+});
+
+
+
+
+module.exports = mongoose.model('Bug', bugSchema);
+
+
+
+/*
 const fs = require('fs');
 const path = require('path');
 const mongodb = require('mongodb');
@@ -66,4 +118,4 @@ module.exports = class Bugs {
                 console.log(err);
             });
     }
-};
+};*/

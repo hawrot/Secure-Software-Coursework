@@ -19,9 +19,9 @@ router.post('/add-bug', bugController.postAddBug);
 router.get('/add-bug', bugController.getAddBug);
 
 router.get('/', (req,res,next)=>{
-   res.render('index', {
+   res.render('login', {
        pageTitle: 'Index',
-       path: '/'
+       path: '/login'
    });
 
 });

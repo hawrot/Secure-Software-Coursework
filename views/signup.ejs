@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+<ion-app >
+    <ion-content>
+        <ion-header translucent>
+            <ion-toolbar color="primary">
+                <ion-title>Sign Up</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-button end href="/" color="warning">Back</ion-button>
+        <ion-gird>
+            <ion-row>
+                <ion-col size-md="4" offset-md="4">
+                    <ion-card>
+                        <% if (errorMessage) { %>
+                            <div class="user-message user-message--error"><%= errorMessage %></div>
+                        <% } %>
+                        <form class="login-form" action="/signup" method="POST">
+                        <ion-item class="log-field">
+                            <ion-label position="fixed">Email</ion-label>
+                            <ion-input required type="email" name="email" id="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="fixed">Password</ion-label>
+                            <ion-input required type="password" name="password" id="password"></ion-input>
+                        </ion-item>
+                            <ion-item>
+                                <ion-label position="fixed">Confirm password</ion-label>
+                                <ion-input required type="password" name="confirmPassword" id="confirmPassword"></ion-input>
+                            </ion-item>
+
+                                <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
+
+
+                       <ion-button type="submit" expand="block" fill="outline"> Sign Up</ion-button>
+                        </form>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-gird>
+
+    </ion-content>
+</ion-app>
+<link rel="stylesheet" type="text/css" href="../public/css/index.scss">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+</body>
+</html>

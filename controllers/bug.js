@@ -24,11 +24,12 @@ exports.postAddBug = (req, res, next) =>{
 };
 
 exports.getBugs = (req,res,next) =>{
-  Bug.fetchAll().then(bugs =>{
-     res.render('view-bug', {
-         bugs: bugs,
-         pageTitle: 'Bugs',
-         path: '/view-bug'
-     });
-  });
+    Bug.find().then(bugs =>{
+        console.log(bugs);
+        res.render('view-bug', {
+            bugs: bugs,
+            pageTitle: 'Bugs',
+            path: '/view-bug'
+        });
+    });
 };
