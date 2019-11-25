@@ -15,7 +15,10 @@
     <ion-header   translucent>
         <ion-toolbar color="primary">
             <ion-title>Bug Tracker</ion-title>
-            <ion-button slot="primary" href="/" color="warning">Log out</ion-button>
+            <form slot="end" action="/logout" method="post">
+                <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                <ion-button type="submit" color="warning">Log out</ion-button>
+            </form>
         </ion-toolbar>
     </ion-header>
 <ion-content>

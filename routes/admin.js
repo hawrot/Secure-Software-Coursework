@@ -4,6 +4,7 @@ const path = require('path');
 const rootDir = require('../util/path');
 
 const bugController = require('../controllers/bug');
+const isAuth = require('../middleware/is-auth')
 
 
 
@@ -13,10 +14,10 @@ const bugController = require('../controllers/bug');
         path: 'view-bug'
     });
 });*/
-router.get('/view-bug', bugController.getBugs);
-router.post('/add-bug', bugController.postAddBug);
+router.get('/view-bug',isAuth, bugController.getBugs);
+router.post('/add-bug',isAuth, bugController.postAddBug);
 
-router.get('/add-bug', bugController.getAddBug);
+router.get('/add-bug',isAuth, bugController.getAddBug);
 
 router.get('/', (req,res,next)=>{
    res.render('login', {
