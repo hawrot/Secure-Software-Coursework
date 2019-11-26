@@ -38,6 +38,8 @@ exports.getSignup = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+
+
     User.findOne({ email: email })
         .then(user => {
             if (!user) {
@@ -53,7 +55,6 @@ exports.postLogin = (req, res, next) => {
                         req.session.user = user;
                         return req.session.save(err => {
                             console.log(err);
-                            console.log('nope 2');
                             res.redirect('view-bug');
                         });
                     }
@@ -63,7 +64,6 @@ exports.postLogin = (req, res, next) => {
                 })
                 .catch(err => {
                     console.log(err);
-                    console.log('nope 4');
                     res.redirect('/login');
                 });
         })

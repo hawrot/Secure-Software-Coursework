@@ -25,6 +25,20 @@ const userSchema = new Schema({
                 }
             }
         ]
+    },
+    comments: {
+        comment:[
+            {
+              user:{
+                  type: String,
+                  required: true
+              },
+              content: {
+                  type: String,
+                  required: true
+              }
+            }
+        ]
     }
 });
 

@@ -8,7 +8,13 @@
     "start": "node app.js",
     "start-server": "node app.js"
   },
-
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "latest",
