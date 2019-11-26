@@ -64,3 +64,10 @@ exports.postDeleteBug = (req, res, next) =>{
         res.redirect('/view-bug');
     }).catch(err => console.log(err));
 };
+
+exports.viewComments = (req, res, next) =>{
+  res.render('view-comments', {
+      pageTitle: 'Comments',
+      path: '/view-comments'
+  });
+};

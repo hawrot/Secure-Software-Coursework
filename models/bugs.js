@@ -34,6 +34,20 @@ const bugSchema = new Schema({
     priority: {
         type: String,
         required: true
+    },
+    comments: {
+        comment:[
+            {
+                user:{
+                    type: String,
+                    required: true
+                },
+                content: {
+                    type: String,
+                    required: true
+                }
+            }
+        ]
     }
 
 });

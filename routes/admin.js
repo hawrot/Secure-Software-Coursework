@@ -20,6 +20,8 @@ router.post('/add-bug',isAuth, bugController.postAddBug);
 router.get('/add-bug',isAuth, bugController.getAddBug);
 router.post('/delete-bug', isAuth, bugController.postDeleteBug);
 
+router.get('/view-comments', isAuth, bugController.viewComments);
+
 router.get('/', (req,res,next)=>{
    res.render('login', {
        pageTitle: 'Index',
