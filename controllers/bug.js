@@ -55,3 +55,12 @@ exports.getBugs = (req,res,next) =>{
         });
     });
 };
+
+exports.postDeleteBug = (req, res, next) =>{
+    const bugId = req.body.bugID;
+    console.log(bugId);
+    Bug.findByIdAndRemove(bugId).then(()=>{
+        console.log('DESTROYED BUG');
+        res.redirect('/view-bug');
+    }).catch(err => console.log(err));
+};

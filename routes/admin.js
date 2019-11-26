@@ -18,6 +18,7 @@ router.get('/view-bug',isAuth, bugController.getBugs);
 router.post('/add-bug',isAuth, bugController.postAddBug);
 
 router.get('/add-bug',isAuth, bugController.getAddBug);
+router.post('/delete-bug', bugController.postDeleteBug);
 
 router.get('/', (req,res,next)=>{
    res.render('login', {
@@ -26,6 +27,8 @@ router.get('/', (req,res,next)=>{
    });
 
 });
+
+
 
 module.exports = router;
 
