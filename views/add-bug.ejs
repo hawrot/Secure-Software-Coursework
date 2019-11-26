@@ -33,17 +33,18 @@
 <!--                        </ion-item>-->
 
                         <ion-item>
-                            <% for (let user of allUsers) { %>
+
                             <ion-label>Assigned to</ion-label>
                             <ion-select name="assignedTo" placeholder="Select One">
-                                <ion-select-option selected value="<%= user.fullName%>"><%= user.fullName%></ion-select-option>
+                                <% for (let user of allUsers) { %>
+                                <ion-select-option name="assignedBy" selected value="<%= user.fullName%>"><%= user.fullName%></ion-select-option>
+                                    <% } %>
                             </ion-select>
-                            <% } %>
+
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed" disabled>Assigned by</ion-label>
-
-                            <ion-input position="end" disabled name="assignedBy" value="<%= user%>" id="assignedBy"></ion-input>
+                            <ion-input disabled name="assignedBy" id="assignedBy"><%= user%></ion-input>
                         </ion-item>
 
                         <ion-item>

@@ -25,7 +25,7 @@ exports.postAddBug = (req, res, next) =>{
     const description = req.body.description;
     const dateTime = date+' '+time;
     const assignedTo = req.body.assignedTo;
-    const assignedBy = req.body.assignedBy;
+    const assignedBy = req.session.user.fullName;
     const status = req.body.status;
     const priority = req.body.priority;
 
