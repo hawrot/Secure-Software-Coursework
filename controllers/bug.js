@@ -3,13 +3,15 @@ const bodyParser = require('body-parser');
 const User = require('../models/user');
 
 
-exports.getAddBug = (req, res, next) =>{
-    res.render('add-bug', {
-      pageTitle : 'Add a bug',
-      path : '/add-bug',
-        user: req.session.user.fullName
 
-  });
+exports.getAddBug = async (req, res, next) => {
+    res.render('add-bug', {
+            pageTitle: 'Add a bug',
+            path: '/add-bug',
+            user: req.session.user.fullName,
+            allUsers: await User.find()
+        }
+    )
 };
 
 
