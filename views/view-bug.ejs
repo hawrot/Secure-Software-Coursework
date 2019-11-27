@@ -48,16 +48,19 @@
                         <b>Priority:</b> <%= bug.priority%><br>
 
                     </ion-card-content>
-                    <form action="/delete-bug" method="POST">
+                    <ion-item>
+                        <form action="/delete-bug" method="POST">
 
-                        <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
-                        <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
-                        <ion-button type="submit"  color="warning">Delete</ion-button>
-                    </form>
+                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
+                            <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
+                            <ion-button type="submit"  color="warning">Delete</ion-button>
+                        </form>
 
                         <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
                         <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
                         <ion-button  href="/view-comments/<%= bug._id%>"  color="primary">Comments</ion-button>
+                    </ion-item>
+
 
                 </ion-card>
                 <% } %>

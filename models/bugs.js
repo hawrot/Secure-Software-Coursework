@@ -56,11 +56,14 @@ bugSchema.methods.addComment = function(comment){
     const username = comment.user;
     const content = comment.content;
     console.log(comment);
-    const updatedComments = [...this.comments];
-    updatedComments.push({
+    const updatedCommentsItems = [...this.comments];
+    updatedCommentsItems.push({
        user : username,
        content: content
     });
+    const updatedComments = {
+        comment: updatedCommentsItems
+    };
     this.comments = updatedComments;
     return this.save();
 
