@@ -18,12 +18,11 @@ exports.getAddBug = async (req, res, next) => {
 exports.postAddBug = (req, res, next) =>{
     let today = new Date();
     let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let time = today.getHours() + ":" + today.getMinutes();
 
 
     const title = req.body.title;
     const description = req.body.description;
-    const dateTime = date+' '+time;
     const assignedTo = req.body.assignedTo;
     const assignedBy = req.session.user.fullName;
     const status = req.body.status;
@@ -32,11 +31,9 @@ exports.postAddBug = (req, res, next) =>{
 
 
     const bug = new Bug({title, description, date, time, assignedTo, assignedBy, status, priority});
-    console.log(bug);
-    console.log(typeof dateTime);
     bug.save().then(result =>{
         console.log(result);
-        res.redirect('/view-bug');
+        res.redirect('/');
     })
         .catch(err =>{
             console.log(err);
@@ -49,7 +46,7 @@ exports.getBugs = (req,res,next) =>{
         console.log(bugs);
         res.render('view-bug', {
             bugs: bugs,
-            pageTitle: 'Bugs',
+            pageTitle: 'Dashboard',
             path: '/view-bug',
 
         });
@@ -61,7 +58,7 @@ exports.postDeleteBug = (req, res, next) =>{
     console.log(bugId);
     Bug.findByIdAndRemove(bugId).then(()=>{
         console.log('DESTROYED BUG');
-        res.redirect('/view-bug');
+        res.redirect('/');
     }).catch(err => console.log(err));
 };
 
@@ -80,14 +77,14 @@ exports.viewComments = (req, res, next) =>{
 
 };
 
-exports.postComment = (req,res,next) =>{
+exports.postComment =  (req,res,next) =>{
     const bugId = req.body.bugID;
     const name = req.session.user.fullName;
     const content = req.body.content;
     const prod = {name, content};
 
     Bug.findById(bugId).then(bug =>{
-        return bug.addComment(content);
+        return bug.addComment(prod);
     })
         .then(result =>{
             console.log(result);

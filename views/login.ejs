@@ -19,9 +19,10 @@
         <ion-row>
             <ion-col size-md="4" offset-md="4">
                 <ion-card padding="10px">
-                    <ion-alert-controller name="alert"></ion-alert-controller>
-
-                <form class="login-form" action="/login" method="POST">
+                    <% if (errorMessage) { %>
+                        <ion-input color="danger" class="user-message user-message--error"><%= errorMessage %></ion-input>
+                    <% } %>
+                    <form class="login-form" action="/login" method="POST">
 
                     <ion-item class="log-field">
                         <ion-label position="fixed">Login</ion-label>

@@ -22,19 +22,17 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
-        <ion-fab padding="30px" horizontal="start" vertical="top" slot="fixed" edge>
-            <ion-fab-button href="add-bug">
-                <ion-icon  name="add"></ion-icon>
-            </ion-fab-button>
-        </ion-fab>
         <ion-grid>
+
             <ion-row>
+
                 <ion-col size-md="6" offset-md="3">
 
                     <ion-card>
+                        <ion-button  href="/" color="warning">Back</ion-button>
 
                         <form id="submit-comment" action="/post-comment" method="POST">
-                            <ion-button slot="start" size="small" href="view-bug" color="warning">Back</ion-button>
+
                             <ion-item>
                                 <ion-label position="floating">Add Comment</ion-label>
                                 <ion-textarea name="content"></ion-textarea>
