@@ -67,12 +67,14 @@ exports.postDeleteBug = (req, res, next) =>{
 
 exports.viewComments = (req, res, next) =>{
     const bugId = req.params.bugID;
+    console.log(bugId);
     Bug.find().then(bugs =>{
         console.log(bugs);
         res.render('view-comments', {
             bugs: bugs,
             pageTitle: 'Comments',
             path: '/view-comments',
+            bugId : bugId
 
         });
     });
@@ -80,10 +82,7 @@ exports.viewComments = (req, res, next) =>{
 };
 
 exports.postComment = (req,res,next) =>{
-    const bugID = req.body.bugID.toString();
+    const bugId = req.body.bugID;
     const content = req.body.content;
-    const comment = {bugID, content};
-    console.log(bugID);
-    // Bug.addComment(comment);
-    //res.redirect('/view-comments');
+
 };
