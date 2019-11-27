@@ -67,7 +67,6 @@ exports.postDeleteBug = (req, res, next) =>{
 
 exports.viewComments = (req, res, next) =>{
     const bugId = req.params.bugID;
-    console.log(bugId);
     Bug.find().then(bugs =>{
         console.log(bugs);
         res.render('view-comments', {
@@ -83,6 +82,16 @@ exports.viewComments = (req, res, next) =>{
 
 exports.postComment = (req,res,next) =>{
     const bugId = req.body.bugID;
+    const name = req.session.user.fullName;
     const content = req.body.content;
+    const prod = {name, content};
+
+    Bug.findById(bugId).then(bug =>{
+        return bug.addComment(content);
+    })
+        .then(result =>{
+            console.log(result);
+        });
+
 
 };

@@ -37,7 +37,7 @@
                             <ion-button slot="start" size="small" href="view-bug" color="warning">Back</ion-button>
                             <ion-item>
                                 <ion-label position="floating">Add Comment</ion-label>
-                                <ion-textarea></ion-textarea>
+                                <ion-textarea name="content"></ion-textarea>
                             </ion-item>
                             <ion-input name="bugID" value="<%= bugId%>"></ion-input>
                             <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
