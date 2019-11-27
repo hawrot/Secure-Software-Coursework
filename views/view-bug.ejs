@@ -49,11 +49,16 @@
 
                     </ion-card-content>
                     <form action="/delete-bug" method="POST">
+
                         <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
                         <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
                         <ion-button type="submit"  color="warning">Delete</ion-button>
                     </form>
-                    <ion-button  href="/view-comments"  color="primary">Comments</ion-button>
+
+                        <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
+                        <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
+                        <ion-button  href="/view-comments/<%= bug._id%>"  color="primary">Comments</ion-button>
+
                 </ion-card>
                 <% } %>
             </ion-col>

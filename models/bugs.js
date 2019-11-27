@@ -52,6 +52,21 @@ const bugSchema = new Schema({
 
 });
 
+bugSchema.methods.addComment = function(comment){
+    const username = comment.user;
+    const content = comment.content;
+    console.log(comment);
+    const updatedComments = [...this.comment];
+    updatedComments.push({
+       user : username,
+       content: content
+    });
+    this.comment = updatedComments;
+    return this.save();
+
+};
+
+
 
 
 

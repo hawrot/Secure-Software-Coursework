@@ -32,12 +32,18 @@
                 <ion-col size-md="6" offset-md="3">
 
                     <ion-card>
-                        <ion-button slot="start" size="small" href="view-bug" color="warning">Back</ion-button>
-                        <ion-item>
-                            <ion-label position="floating">Add Comment</ion-label>
-                            <ion-textarea></ion-textarea>
-                        </ion-item>
-                        <ion-button size="small" color="success">Add</ion-button>
+
+                        <form id="submit-comment" action="/post-comment" method="POST">
+                            <ion-button slot="start" size="small" href="view-bug" color="warning">Back</ion-button>
+                            <ion-item>
+                                <ion-label position="floating">Add Comment</ion-label>
+                                <ion-textarea></ion-textarea>
+                            </ion-item>
+                            <ion-input type="hidden" name="bugID" value="<%= bugs._id %>"> </ion-input>
+                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
+                            <ion-button size="small" type="submit" color="success">Add</ion-button>
+                        </form>
+
                     </ion-card>
 
                 </ion-col>
