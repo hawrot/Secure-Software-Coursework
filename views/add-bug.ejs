@@ -20,12 +20,12 @@
                 <ion-col size-md="4" offset-md="4" possition="centre">
                     <form class="bug-form" action="/add-bug" method="POST">
                         <ion-item>
-                            <ion-label position="fixed">Bug title</ion-label>
-                            <ion-input required="true" type="text" name="title" id="title"></ion-input>
+                            <ion-label  position="fixed">Bug title</ion-label>
+                            <ion-input align="right" required="true" type="text" name="title" id="title"></ion-input>
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed">Description</ion-label>
-                            <ion-input required="true" name="description" id="description"></ion-input>
+                            <ion-input align="right" required="true" name="description" id="description"></ion-input>
                         </ion-item>
 
                         <ion-item>
@@ -40,23 +40,23 @@
                         </ion-item>
                         <ion-item>
                             <ion-label position="fixed" disabled>Assigned by</ion-label>
-                            <ion-input disabled name="assignedBy" id="assignedBy"><%= user%></ion-input>
+                            <ion-input align="right" disabled value="<%= user%>" name="assignedBy" id="assignedBy"></ion-input>
                         </ion-item>
 
                         <ion-item>
                             <ion-label>Priority</ion-label>
                             <ion-select name="priority" placeholder="Select One">
-                                <ion-select-option selected value="low">Low</ion-select-option>
-                                <ion-select-option value="medium">Medium</ion-select-option>
-                                <ion-select-option value="high">High</ion-select-option>
+                                <ion-select-option selected value="Low">Low</ion-select-option>
+                                <ion-select-option value="Medium">Medium</ion-select-option>
+                                <ion-select-option value="High">High</ion-select-option>
                             </ion-select>
                         </ion-item>
                         <ion-item>
                             <ion-label>Status</ion-label>
                             <ion-select name="status" placeholder="Select One">
-                                <ion-select-option selected value="open">Open</ion-select-option>
-                                <ion-select-option value="resolved">Resolved</ion-select-option>
-                                <ion-select-option value="resolved">Closed</ion-select-option>
+                                <ion-select-option selected value="Open">Open</ion-select-option>
+                                <ion-select-option value="Resolved">Resolved</ion-select-option>
+                                <ion-select-option value="Closed">Closed</ion-select-option>
                             </ion-select>
 
                         </ion-item>
