@@ -62,14 +62,10 @@ bugSchema.methods.addComment = function(name, content, projectId){
         content: content,
         projectId: projectId
     });
-    console.log(updatedComments);
     this.comments = updatedComments;
     return this.save();
 
 };
-
-
-
 
 module.exports = mongoose.model('Bug', bugSchema);
 

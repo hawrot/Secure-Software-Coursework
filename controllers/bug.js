@@ -43,7 +43,6 @@ exports.postAddBug = (req, res, next) =>{
 
 exports.getBugs = (req,res,next) =>{
     Bug.find().then(bugs =>{
-        console.log(bugs);
         res.render('view-bug', {
             bugs: bugs,
             pageTitle: 'Dashboard',
@@ -66,7 +65,6 @@ exports.viewComments = (req, res, next) =>{
     const bugId = req.params.bugID;
 
     Bug.find().then(bugs =>{
-        console.log(bugs.comments);
         res.render('view-comments', {
             bugs: bugs,
             pageTitle: 'Comments',
@@ -89,7 +87,7 @@ exports.postComment =  (req,res,next) =>{
     })
         .then(result =>{
             res.redirect('view-comments/'+ bugId);
-            console.log(result);
+
         });
 
 
