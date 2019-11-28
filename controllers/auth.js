@@ -76,6 +76,7 @@ exports.postSignup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
+
     User.findOne({ email: email })
         .then(userDoc => {
             if (userDoc) {

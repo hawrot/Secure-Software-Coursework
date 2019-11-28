@@ -41,8 +41,19 @@
                             <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
                             <ion-button size="small" type="submit" color="success">Add</ion-button>
                         </form>
-
                     </ion-card>
+
+                    <% bugs.comments.forEach(function(elem) { %>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title><%= elem.content %></ion-card-title>
+
+                            </ion-card-header>
+                            <ion-card-content>
+
+                            </ion-card-content>
+                        </ion-card>
+                    <% }) %>
 
                 </ion-col>
             </ion-row>

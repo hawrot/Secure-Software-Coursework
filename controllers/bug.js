@@ -64,15 +64,18 @@ exports.postDeleteBug = (req, res, next) =>{
 
 exports.viewComments = (req, res, next) =>{
     const bugId = req.params.bugID;
+
     Bug.find().then(bugs =>{
-        console.log(bugs);
+        console.log(bugs.comments);
         res.render('view-comments', {
             bugs: bugs,
             pageTitle: 'Comments',
             path: '/view-comments',
-            bugId : bugId
+            bugId : bugId,
+
 
         });
+        console.log(bugs.comments);
     });
 
 };
