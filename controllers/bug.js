@@ -75,7 +75,7 @@ exports.viewComments = (req, res, next) =>{
 
 
         });
-        console.log(bugs.comments);
+
     });
 
 };
@@ -84,11 +84,11 @@ exports.postComment =  (req,res,next) =>{
     const bugId = req.body.bugID;
     const name = req.session.user.fullName;
     const content = req.body.content;
-    console.log(prod = {name, content, bugId});
     Bug.findById(bugId).then(bug =>{
         return bug.addComment(name, content, bugId);
     })
         .then(result =>{
+            res.redirect('view-comments/'+ bugId);
             console.log(result);
         });
 
