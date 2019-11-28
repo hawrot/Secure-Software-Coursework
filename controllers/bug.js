@@ -84,10 +84,9 @@ exports.postComment =  (req,res,next) =>{
     const bugId = req.body.bugID;
     const name = req.session.user.fullName;
     const content = req.body.content;
-    const prod = {name, content};
-    console.log('prod' +  prod.name);
+    console.log(prod = {name, content, bugId});
     Bug.findById(bugId).then(bug =>{
-        return bug.addComment(name, content);
+        return bug.addComment(name, content, bugId);
     })
         .then(result =>{
             console.log(result);

@@ -45,6 +45,7 @@
 
                     <% for (bug of bugs) { %>
                         <% for (comment of bug.comments) { %>
+                            <% if(comment.projectId == bugId) { %>
                             <ion-card>
                                 <ion-card-header>
                                     <ion-card-subtitle><%= comment.user %></ion-card-subtitle>
@@ -56,6 +57,7 @@
                             </ion-card>
 
                         <% } %>
+                    <% } %>
                     <% } %>
 
                 </ion-col>

@@ -44,18 +44,23 @@ const bugSchema = new Schema({
             content: {
                 type: String,
                 required: true
+            },
+            projectId: {
+                type: String,
+                required: true
             }
         }
     ]
 
 });
 
-bugSchema.methods.addComment = function(name, content){
+bugSchema.methods.addComment = function(name, content, projectId){
 
     let updatedComments = [...this.comments];
     updatedComments.push({
         user: name,
-        content: content
+        content: content,
+        projectId: projectId
     });
     console.log(updatedComments);
     this.comments = updatedComments;
