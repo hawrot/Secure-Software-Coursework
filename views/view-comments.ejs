@@ -11,10 +11,9 @@
 <ion-app>
 
 
-
-    <ion-header   translucent>
+    <ion-header translucent>
         <ion-toolbar color="primary">
-            <ion-title>Bug Tracker</ion-title>
+            <ion-title>Bug Tracker - <%= pageTitle%></ion-title>
             <form slot="end" action="/logout" method="post">
                 <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                 <ion-button type="submit" color="warning">Log out</ion-button>
@@ -29,16 +28,16 @@
                 <ion-col size-md="6" offset-md="3">
 
                     <ion-card>
-                        <ion-button  href="/" color="warning">Back</ion-button>
+                        <ion-button href="/" color="warning">Back</ion-button>
 
                         <form id="submit-comment" action="/post-comment" method="POST">
 
                             <ion-item>
                                 <ion-label position="floating">Add Comment</ion-label>
-                                <ion-textarea required type="text" name="content" minlength="5" ></ion-textarea>
+                                <ion-textarea required type="text" name="content" minlength="5"></ion-textarea>
                             </ion-item>
-                            <ion-input type="hidden" name="bugID" value="<%= bugId%>"></ion-input>
-                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
+                            <ion-input type="hidden" name="bugID" value="<%= bugId %>"></ion-input>
+                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                             <ion-button size="small" type="submit" color="success">Add</ion-button>
                         </form>
                     </ion-card>
@@ -46,18 +45,18 @@
                     <% for (bug of bugs) { %>
                         <% for (comment of bug.comments) { %>
                             <% if(comment.projectId == bugId) { %>
-                            <ion-card>
-                                <ion-card-header>
-                                    <ion-card-subtitle><%= comment.user %></ion-card-subtitle>
-                                </ion-card-header>
-                                    <ion-card-content><%= comment.content%></ion-card-content>
-                                <ion-card-content>
+                                <ion-card>
+                                    <ion-card-header>
+                                        <ion-card-subtitle><%= comment.user %></ion-card-subtitle>
+                                    </ion-card-header>
+                                    <ion-card-content><%= comment.content %></ion-card-content>
+                                    <ion-card-content>
 
-                                </ion-card-content>
-                            </ion-card>
+                                    </ion-card-content>
+                                </ion-card>
 
+                            <% } %>
                         <% } %>
-                    <% } %>
                     <% } %>
 
                 </ion-col>
@@ -65,7 +64,8 @@
         </ion-grid>
 
     </ion-content>
-</ion-app>>
+</ion-app>
+>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>

@@ -5,18 +5,17 @@ const auth = require('../middleware/is-auth');
 exports.getLogin = (req, res, next) => {
 
 
-        let message = req.flash('error');
-        if (message.length > 0) {
-            message = message[0];
-        } else {
-            message = null;
-        }
-        res.render('login', {
-            path: '/login',
-            pageTitle: 'Login',
-            errorMessage: message
-        });
-
+    let message = req.flash('error');
+    if (message.length > 0) {
+        message = message[0];
+    } else {
+        message = null;
+    }
+    res.render('login', {
+        path: '/login',
+        pageTitle: 'Login',
+        errorMessage: message
+    });
 
 
 };
@@ -40,7 +39,7 @@ exports.postLogin = (req, res, next) => {
     const password = req.body.password;
 
 
-    User.findOne({ email: email })
+    User.findOne({email: email})
         .then(user => {
             if (!user) {
                 req.flash('error', 'Invalid email or password.');
@@ -77,7 +76,7 @@ exports.postSignup = (req, res, next) => {
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
-    User.findOne({ email: email })
+    User.findOne({email: email})
         .then(userDoc => {
             if (userDoc) {
                 req.flash('error', 'E-Mail exists already, please pick a different one.');
@@ -90,7 +89,7 @@ exports.postSignup = (req, res, next) => {
                         fullName: fullName,
                         email: email,
                         password: hashedPassword,
-                        bugs: { items: [] }
+                        bugs: {items: []}
                     });
                     return user.save();
                 })

@@ -20,7 +20,8 @@
             <ion-col size-md="4" offset-md="4">
                 <ion-card padding="10px">
                     <% if (errorMessage) { %>
-                        <ion-input color="danger" class="user-message user-message--error"><%= errorMessage %></ion-input>
+                        <ion-input color="danger"
+                                   class="user-message user-message--error"><%= errorMessage %></ion-input>
                     <% } %>
                     <form class="login-form" action="/login" method="POST">
 

@@ -11,66 +11,66 @@
 <ion-app>
 
 
-
-    <ion-header   translucent>
+    <ion-header translucent>
         <ion-toolbar color="primary">
-            <ion-title>Bug Tracker</ion-title>
+            <ion-title>Bug Tracker - <%= pageTitle%></ion-title>
             <form slot="end" action="/logout" method="post">
                 <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                 <ion-button type="submit" color="warning">Log out</ion-button>
             </form>
         </ion-toolbar>
     </ion-header>
-<ion-content>
+    <ion-content>
 
 
-    <ion-fab padding="30px" horizontal="start" vertical="top" slot="fixed" edge>
-        <ion-fab-button href="add-bug">
-            <ion-icon  name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-    <ion-grid>
-        <ion-row>
-            <ion-col size-md="6" offset-md="3">
+        <ion-fab padding="30px" horizontal="start" vertical="top" slot="fixed" edge>
+            <ion-fab-button href="add-bug">
+                <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+        <ion-grid>
+            <ion-row>
+                <ion-col size-md="6" offset-md="3">
 
-                <% for (let bug of bugs) { %>
-                <ion-card>
-                    <ion-card-header>
-                        <ion-card-title><%= bug.title%></ion-card-title>
-                        <ion-card-subtitle><%=bug.description%></ion-card-subtitle>
-                    </ion-card-header>
+                    <% for (let bug of bugs) { %>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title><%= bug.title %></ion-card-title>
+                                <ion-card-subtitle><%= bug.description %></ion-card-subtitle>
+                            </ion-card-header>
 
-                    <ion-card-content>
-                       <b>Date:</b> <%= bug.date%> <b>Time:</b> <%=bug.time%> <br>
-                        <b>Assigned To:</b> <%= bug.assignedTo%><br>
-                        <b>Created By:</b> <%= bug.assignedBy%><br>
-                        <b>Status:</b> <%= bug.status%><br>
-                        <b>Priority:</b> <%= bug.priority%><br>
-                        <b>Number of Comments:</b> <%= bug.comments.length%><br>
+                            <ion-card-content>
+                                <b>Date:</b> <%= bug.date %> <b>Time:</b> <%= bug.time %> <br>
+                                <b>Assigned To:</b> <%= bug.assignedTo %><br>
+                                <b>Created By:</b> <%= bug.assignedBy %><br>
+                                <b>Status:</b> <%= bug.status %><br>
+                                <b>Priority:</b> <%= bug.priority %><br>
+                                <b>Number of Comments:</b> <%= bug.comments.length %><br>
 
-                    </ion-card-content>
-                    <ion-item>
-                        <form action="/delete-bug" method="POST">
+                            </ion-card-content>
+                            <ion-item>
+                                <form action="/delete-bug" method="POST">
 
-                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
-                            <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
-                            <ion-button type="submit"  color="warning">Delete</ion-button>
-                        </form>
+                                    <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                                    <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
+                                    <ion-button type="submit" color="warning">Delete</ion-button>
+                                </form>
 
-                        <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
-                        <ion-input name="bugID" type="hidden" value="<%=bug._id%>"></ion-input>
-                        <ion-button  href="/view-comments/<%= bug._id%>"  color="primary">Comments</ion-button>
-                    </ion-item>
+                                <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                                <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
+                                <ion-button href="/view-comments/<%= bug._id %>" color="primary">Comments</ion-button>
+                            </ion-item>
 
 
-                </ion-card>
-                <% } %>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+                        </ion-card>
+                    <% } %>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-</ion-content>
-</ion-app>>
+    </ion-content>
+</ion-app>
+>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
