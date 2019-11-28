@@ -37,7 +37,7 @@
                                 <ion-label position="floating">Add Comment</ion-label>
                                 <ion-textarea name="content"></ion-textarea>
                             </ion-item>
-                            <ion-input name="bugID" value="<%= bugId%>"></ion-input>
+                            <ion-input type="hidden" name="bugID" value="<%= bugId%>"></ion-input>
                             <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"> </ion-input>
                             <ion-button size="small" type="submit" color="success">Add</ion-button>
                         </form>

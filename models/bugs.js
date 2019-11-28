@@ -35,40 +35,33 @@ const bugSchema = new Schema({
         type: String,
         required: true
     },
-    comments: {
-        comment:[
-            {
-                user:{
-                    type: String,
-                    required: true
-                },
-                content: {
-                    type: String,
-                    required: true
-                }
+    comments:[
+        {
+            user:{
+                type: String,
+                required: true
+            },
+            content: {
+                type: String,
+                required: true
             }
-        ]
-    }
+        }
+    ]
 
 });
 
-bugSchema.methods.addComment = function(comment){
-    const username = comment.user;
-    const content = comment.content;
-    console.log(comment);
-    const updatedCommentsItems = [...this.comments];
-    updatedCommentsItems.push({
-       user : username,
-       content: content
+bugSchema.methods.addComment = function(name, content){
+
+    let updatedComments = [...this.comments];
+    updatedComments.push({
+        user: name,
+        content: content
     });
-    const updatedComments = {
-        comment: updatedCommentsItems
-    };
+    console.log(updatedComments);
     this.comments = updatedComments;
     return this.save();
 
 };
-
 
 
 

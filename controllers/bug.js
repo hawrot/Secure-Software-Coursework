@@ -82,9 +82,9 @@ exports.postComment =  (req,res,next) =>{
     const name = req.session.user.fullName;
     const content = req.body.content;
     const prod = {name, content};
-
+    console.log('prod' +  prod.name);
     Bug.findById(bugId).then(bug =>{
-        return bug.addComment(prod);
+        return bug.addComment(name, content);
     })
         .then(result =>{
             console.log(result);
