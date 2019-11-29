@@ -56,6 +56,12 @@ exports.postDeleteBug = (req, res, next) => {
 
 exports.viewComments = (req, res, next) => {
     const bugId = req.params.bugID;
+    let message = req.flash('error');
+    if (message.length > 0) {
+        message = message[0];
+    } else {
+        message = null;
+    }
 
     Bug.find().then(bugs => {
         res.render('view-comments', {
@@ -63,6 +69,7 @@ exports.viewComments = (req, res, next) => {
             pageTitle: 'Comments',
             path: '/view-comments',
             bugId: bugId,
+            errorMessage: message
         });
     });
 };
@@ -72,7 +79,14 @@ exports.postComment = (req, res, next) => {
     const name = req.session.user.fullName;
     const content = req.body.content;
     Bug.findById(bugId).then(bug => {
-        return bug.addComment(name, content, bugId);
+        if (bug.status === 'Closed'){
+            console.log('bug is closed!');
+            req.flash('error', 'Ticket is closed, cannot add comments!');
+            res.redirect('view-comments/' + bugId);
+        }else {
+            return bug.addComment(name, content, bugId);
+        }
+
     })
         .then(result => {
             res.redirect('view-comments/' + bugId);

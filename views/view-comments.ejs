@@ -28,6 +28,10 @@
                 <ion-col size-md="6" offset-md="3">
 
                     <ion-card>
+                        <% if (errorMessage) { %>
+                            <ion-input align-text="centre" color="danger"
+                                       class="user-message user-message--error"><%= errorMessage %></ion-input>
+                        <% } %>
                         <ion-button href="/" color="warning">Back</ion-button>
 
                         <form id="submit-comment" action="/post-comment" method="POST">
