@@ -21,7 +21,8 @@
     "connect-mongodb-session": "^2.2.0",
     "ejs": "^2.7.2",
     "express": "^4.17.1",
-    "mongoose": "^5.7.12"
+    "mongoose": "^5.7.12",
+    "password-validator": "^5.0.3"
   },
   "devDependencies": {
     "connect-flash": "^0.1.1",

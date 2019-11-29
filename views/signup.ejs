@@ -21,7 +21,8 @@
                 <ion-col size-md="4" offset-md="4">
                     <ion-card>
                         <% if (errorMessage) { %>
-                            <div class="user-message user-message--error"><%= errorMessage %></div>
+                            <ion-input align-text="centre" color="danger"
+                                       class="user-message user-message--error"><%= errorMessage %></ion-input>
                         <% } %>
                         <form class="login-form" action="/signup" method="POST">
                             <ion-item>

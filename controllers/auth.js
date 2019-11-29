@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const auth = require('../middleware/is-auth');
+const passwordValidator = require('password-validator');
 
 exports.getLogin = (req, res, next) => {
 
@@ -75,11 +76,20 @@ exports.postSignup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
+    let schema = new passwordValidator();
+    schema.is().min(8);
+    schema.is().max(20);
+    schema.has().digits();
 
     User.findOne({email: email})
         .then(userDoc => {
             if (userDoc) {
                 req.flash('error', 'E-Mail exists already, please pick a different one.');
+                return res.redirect('/signup');
+            }
+            if (!schema.validate(password)){
+                req.flash('error', 'Password needs to be between 8 and 20 and consist of letters.');
+                console.log('password to short');
                 return res.redirect('/signup');
             }
             return bcrypt
