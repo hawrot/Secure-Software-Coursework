@@ -54,6 +54,31 @@ exports.postDeleteBug = (req, res, next) => {
     }).catch(err => console.log(err));
 };
 
+exports.closeBugTicket = (req,res,next) =>{
+    const bugId = req.body.bugID;
+    Bug.findById(bugId).then(prod =>{
+        prod.status = 'Closed';
+        return prod.save();
+
+    })
+        .then(result =>{
+            console.log('UPDATED STATUS');
+            res.redirect('/');
+        })
+};
+exports.openBugTicket = (req,res,next) =>{
+    const bugId = req.body.bugID;
+    Bug.findById(bugId).then(prod =>{
+        prod.status = 'Open';
+        return prod.save();
+
+    })
+        .then(result =>{
+            console.log('UPDATED STATUS');
+            res.redirect('/');
+        })
+};
+
 exports.viewComments = (req, res, next) => {
     const bugId = req.params.bugID;
     let message = req.flash('error');

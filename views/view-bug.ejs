@@ -53,12 +53,32 @@
 
                                     <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                                     <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
-                                    <ion-button type="submit" color="warning">Delete</ion-button>
+                                    <ion-button type="submit" color="danger">Delete</ion-button>
                                 </form>
+
+
+                                    <% if(bug.status =='Open' || bug.status == 'Resolved') { %>
+                                        <form action="/close-status" method="POST">
+                                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                                            <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
+                                            <ion-button type="submit" color="warning">Close ticket</ion-button>
+
+                                        </form>
+                                    <% } if(bug.status ==='Closed') { %>
+                                            <form action="/open-status" method="POST">
+                                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                                            <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
+                                            <ion-button type="submit" color="warning">Open ticket</ion-button>
+                                            </form>
+                                        <% } %>
+
+
+
 
                                 <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                                 <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
-                                <ion-button href="/view-comments/<%= bug._id %>" color="primary">Comments</ion-button>
+                                <ion-button href="/view-comments/<%= bug._id %>" color="secondary">View Comments</ion-button>
+
                             </ion-item>
 
 
