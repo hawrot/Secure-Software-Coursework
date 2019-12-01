@@ -57,7 +57,15 @@
                                     <ion-button type="submit" color="danger">Delete</ion-button>
                                 </form>
                                 <% } %>
-                                    <%  if(bug.status ==='Open'  || bug.status==='Resolved') { %>
+                                    <%  if(bug.status ==='Resolved'  && bug.assignedBy === fullName) { %>
+                                        <form action="/close-status" method="POST">
+                                            <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
+                                            <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
+                                            <ion-button type="submit" color="warning">Close ticket</ion-button>
+
+                                        </form>
+                                    <% } %>
+                                    <%  if(bug.status ==='Open'  && bug.assignedBy === fullName) { %>
                                         <form action="/close-status" method="POST">
                                             <ion-input type="hidden" name="_csrf" value="<%= csrfToken %>"></ion-input>
                                             <ion-input name="bugID" type="hidden" value="<%= bug._id %>"></ion-input>
