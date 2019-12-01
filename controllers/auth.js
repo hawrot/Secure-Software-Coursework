@@ -44,7 +44,6 @@ exports.postLogin = (req, res, next) => {
         .then(user => {
             if (!user) {
                 req.flash('error', 'Invalid email or password.');
-                console.log('nope');
                 return res.redirect('/login');
             }
             bcrypt
@@ -59,7 +58,6 @@ exports.postLogin = (req, res, next) => {
                         });
                     }
                     req.flash('error', 'Invalid email or password.');
-                    console.log('nope 3');
                     res.redirect('/login');
                 })
                 .catch(err => {
@@ -68,7 +66,6 @@ exports.postLogin = (req, res, next) => {
                 });
         })
         .catch(err => console.log(err));
-    console.log('nope');
 };
 
 exports.postSignup = (req, res, next) => {
@@ -92,7 +89,8 @@ exports.postSignup = (req, res, next) => {
                 console.log('password to short');
                 return res.redirect('/signup');
             }
-            return bcrypt
+
+           return bcrypt
                 .hash(password, 12)
                 .then(hashedPassword => {
                     const user = new User({

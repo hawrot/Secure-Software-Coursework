@@ -35,11 +35,13 @@ exports.postAddBug = (req, res, next) => {
 };
 
 exports.getBugs = (req, res, next) => {
+    fullName = req.session.user.fullName;
     Bug.find().then(bugs => {
         res.render('view-bug', {
             bugs: bugs,
             pageTitle: 'Dashboard',
             path: '/view-bug',
+            fullName: fullName
 
         });
     });
